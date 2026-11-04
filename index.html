@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V9 STORE - Chuteiras de Alta Performance</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#FACC15',
+                        'gold-hover': '#EAB308',
+                        darkBg: '#0F0F10',
+                        darkCard: '#18181B',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilos personalizados e efeitos Neon */
+        .neon-border {
+            box-shadow: 0 0 10px rgba(250, 204, 21, 0.3), inset 0 0 10px rgba(250, 204, 21, 0.1);
+        }
+        .neon-glow {
+            filter: drop-shadow(0px 0px 8px rgba(250, 204, 21, 0.5));
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF, #FACC15);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0F0F10;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #27272A;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FACC15;
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-zinc-100 min-h-screen flex flex-col font-sans antialiased selection:bg-gold selection:text-black">
+
+    <!-- CABEÇALHO / HEADER -->
+    <header class="sticky top-0 z-40 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- LOGO -->
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-full border-2 border-gold flex items-center justify-center bg-black neon-border transition-transform duration-300 group-hover:scale-105">
+                    <svg class="w-7 h-7 text-gold neon-glow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-2xl font-black tracking-wider gold-gradient-text leading-none">V9 STORE</span>
+                    <span class="text-[10px] tracking-widest text-zinc-400 font-bold uppercase">High Performance</span>
+                </div>
+            </a>
+
+            <!-- NAVEGAÇÃO -->
+            <nav class="hidden md:flex items-center space-x-8 font-semibold text-sm">
+                <a href="#home" class="hover:text-gold transition-colors">Início</a>
+                <a href="#produtos" class="hover:text-gold transition-colors">Produtos</a>
+                <a href="#sobre" class="hover:text-gold transition-colors">Quem Somos</a>
+                <a href="#contato" class="hover:text-gold transition-colors">Contato</a>
+            </nav>
+
+            <!-- AÇÕES (CARRINHO & ADMIN) -->
+            <div class="flex items-center space-x-5">
+                <!-- Botão Carrinho -->
+                <button onclick="toggleCartModal()" class="relative p-2.5 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-gold/50 transition-all text-zinc-200 hover:text-gold">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                    </svg>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-gold text-black font-black text-xs w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                </button>
+
+                <!-- Link/Botão Admin -->
+                <button onclick="toggleAdminModal()" class="text-xs font-semibold px-3 py-2 rounded-lg bg-zinc-900 border border-zinc-800 hover:bg-zinc-800 text-zinc-400 hover:text-gold transition-all">
+                    Painel Admin
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- BANNER HERO -->
+    <section id="home" class="relative overflow-hidden bg-gradient-to-b from-zinc-950 via-zinc-900 to-darkBg py-20 lg:py-32 border-b border-zinc-800/80">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#FACC15_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <span class="px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest bg-gold/10 text-gold border border-gold/20 inline-block mb-6">
+                Coleção 2026 Pro
+            </span>
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white uppercase italic mb-6">
+                Domine o Campo com <br><span class="gold-gradient-text">Velocidade & Precisão</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-zinc-400 text-base sm:text-lg mb-8 font-medium">
+                Chuteiras desenvolvidas para atletas de alta performance. Encontre o modelo ideal para Campo, Society ou Futsal e leve seu jogo ao próximo nível.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#produtos" class="px-8 py-4 bg-gold hover:bg-gold-hover text-black font-black text-sm uppercase tracking-wider rounded-xl transition-all shadow-lg shadow-gold/20 flex items-center justify-center gap-2">
+                    Ver Catálogo
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ÁREA PÚBLICA / CATÁLOGO -->
+    <main id="produtos" class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        
+        <!-- Filtros e Título -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+            <div>
+                <h2 class="text-3xl font-black uppercase tracking-wide text-white">Chuteiras em Destaque</h2>
+                <p class="text-zinc-400 text-sm mt-1">Escolha o seu estilo de jogo e domine a partida</p>
+            </div>
+            
+            <div class="flex flex-wrap gap-2">
+                <button onclick="filterProducts('all')" class="filter-btn active px-4 py-2 rounded-lg bg-gold text-black font-bold text-xs uppercase tracking-wider transition-all">Todos</button>
+                <button onclick="filterProducts('Campo')" class="filter-btn px-4 py-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 font-bold text-xs uppercase tracking-wider hover:border-gold/40 transition-all">Campo</button>
+                <button onclick="filterProducts('Society')" class="filter-btn px-4 py-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 font-bold text-xs uppercase tracking-wider hover:border-gold/40 transition-all">Society</button>
+                <button onclick="filterProducts('Futsal')" class="filter-btn px-4 py-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 font-bold text-xs uppercase tracking-wider hover:border-gold/40 transition-all">Futsal</button>
+            </div>
+        </div>
+
+        <!-- GRID DE PRODUTOS -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Renderizado Dinamicamente via JavaScript -->
+        </div>
+    </main>
+
+    <!-- SEÇÕES INFORMATIVAS -->
+    <section id="sobre" class="bg-zinc-950 py-16 border-t border-zinc-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-8">
+            <div class="p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800">
+                <div class="w-12 h-12 bg-gold/10 text-gold rounded-xl flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2">Alta Performance</h3>
+                <p class="text-zinc-400 text-sm">Tecnologia avançada em materiais leveza e tração ideal para performance máxima.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800">
+                <div class="w-12 h-12 bg-gold/10 text-gold rounded-xl flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2">Entrega Rápida</h3>
+                <p class="text-zinc-400 text-sm">Enviamos para todo o país com rastreamento detalhado e suporte ágil.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800">
+                <div class="w-12 h-12 bg-gold/10 text-gold rounded-xl flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2">Garantia V9</h3>
+                <p class="text-zinc-400 text-sm">Produtos 100% originais com garantia de fabricação e suporte dedicado.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer id="contato" class="bg-black border-t border-zinc-900 py-10 text-center text-zinc-500 text-xs">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="font-bold text-zinc-400 mb-2">V9 STORE © 2026 - Todos os direitos reservados.</p>
+            <p>Contato: atendimento@v9store.com | WhatsApp: (11) 99999-9999</p>
+        </div>
+    </footer>
+
+    <!-- MODAL DO CARRINHO -->
+    <div id="cart-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex justify-end transition-opacity">
+        <div class="w-full max-w-md bg-zinc-900 h-full flex flex-col border-l border-zinc-800 shadow-2xl">
+            <!-- Header Modal -->
+            <div class="p-6 border-b border-zinc-800 flex items-center justify-between">
+                <h3 class="text-xl font-black uppercase text-white flex items-center gap-2">
+                    <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                    Seu Carrinho
+                </h3>
+                <button onclick="toggleCartModal()" class="text-zinc-400 hover:text-white p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+
+            <!-- Lista de Itens -->
+            <div id="cart-items" class="flex-grow overflow-y-auto p-6 space-y-4">
+                <!-- Renderizado via JS -->
+            </div>
+
+            <!-- Footer Modal / Total -->
+            <div class="p-6 border-t border-zinc-800 bg-zinc-950 space-y-4">
+                <div class="flex justify-between text-base font-bold text-white">
+                    <span>Subtotal:</span>
+                    <span id="cart-total" class="text-gold">R$ 0,00</span>
+                </div>
+                
+                <div class="space-y-2">
+                    <button onclick="checkoutWhatsApp()" class="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl flex items-center justify-center gap-2 transition-all">
+                        Finalizar via WhatsApp
+                    </button>
+                    <button onclick="checkoutPIX()" class="w-full py-3 bg-zinc-800 hover:bg-zinc-700 text-gold font-bold rounded-xl border border-gold/30 flex items-center justify-center gap-2 transition-all">
+                        Pagar com PIX (Simulação)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DO PAINEL ADMIN -->
+    <div id="admin-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden overflow-y-auto p-4 sm:p-6 lg:p-8">
+        <div class="max-w-4xl mx-auto bg-zinc-900 rounded-2xl border border-zinc-800 overflow-hidden shadow-2xl my-8">
+            
+            <!-- Admin Header -->
+            <div class="p-6 border-b border-zinc-800 flex items-center justify-between bg-zinc-950">
+                <div class="flex items-center gap-3">
+                    <span class="w-3 h-3 rounded-full bg-gold animate-pulse"></span>
+                    <h3 class="text-xl font-black uppercase text-white">Painel do Administrador</h3>
+                </div>
+                <button onclick="toggleAdminModal()" class="text-zinc-400 hover:text-white p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+
+            <div class="p-6 space-y-8">
+                <!-- FORMULÁRIO DE CADASTRO/EDIÇÃO -->
+                <div class="bg-zinc-950 p-6 rounded-xl border border-zinc-800">
+                    <h4 id="form-title" class="text-lg font-bold text-gold uppercase mb-4">Cadastrar Novo Produto</h4>
+                    <form id="product-form" onsubmit="handleProductSubmit(event)" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <input type="hidden" id="prod-id">
+                        <div>
+                            <label class="block text-xs font-bold text-zinc-400 uppercase mb-1">Nome da Chuteira</label>
+                            <input type="text" id="prod-name" required class="w-full bg-zinc-900 border border-zinc-800 rounded-lg p-2.5 text-white text-sm focus:border-gold outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-zinc-400 uppercase mb-1">Categoria</label>
+                            <select id="prod-category" required class="w-full bg-zinc-900 border border-zinc-800 rounded-lg p-2.5 text-white text-sm focus:border-gold outline-none">
+                                <option value="Campo">Campo</option>
+                                <option value="Society">Society</option>
+                                <option value="Futsal">Futsal</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-zinc-400 uppercase mb-1">Preço (R$)</label>
+                            <input type="number" step="0.01" id="prod-price" required class="w-full bg-zinc-900 border border-zinc-800 rounded-lg p-2.5 text-white text-sm focus:border-gold outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-zinc-400 uppercase mb-1">Qtd em Estoque</label>
+                            <input type="number" id="prod-stock" required min="0" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg p-2.5 text-white text-sm focus:border-gold outline-none">
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label class="block text-xs font-bold text-zinc-400 uppercase mb-1">URL da Imagem</label>
+                            <input type="url" id="prod-image" placeholder="https://exemplo.com/imagem.jpg" required class="w-full bg-zinc-900 border border-zinc-800 rounded-lg p-2.5 text-white text-sm focus:border-gold outline-none">
+                        </div>
+                        <div class="sm:col-span-2 flex gap-3 pt-2">
+                            <button type="submit" class="flex-1 bg-gold hover:bg-gold-hover text-black font-bold py-2.5 rounded-lg text-sm uppercase transition-all">Salvar Produto</button>
+                            <button type="button" onclick="resetForm()" class="px-4 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-bold rounded-lg text-sm transition-all">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- TABELA DE ESTOQUE -->
+                <div>
+                    <h4 class="text-lg font-bold text-white uppercase mb-4">Gerenciamento de Estoque</h4>
+                    <div class="overflow-x-auto rounded-xl border border-zinc-800">
+                        <table class="w-full text-left text-sm text-zinc-400">
+                            <thead class="bg-zinc-950 text-xs uppercase text-zinc-400 border-b border-zinc-800">
+                                <tr>
+                                    <th class="p-4">Produto</th>
+                                    <th class="p-4">Categoria</th>
+                                    <th class="p-4">Preço</th>
+                                    <th class="p-4">Estoque</th>
+                                    <th class="p-4 text-right">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-table-body" class="divide-y divide-zinc-800/60 bg-zinc-900">
+                                <!-- Renderizado via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT / LÓGICA DO SISTEMA -->
+    <script>
+        // PRODUTOS INICIAIS DE EXEMPLO
+        const initialProducts = [
+            { id: 1, name: "V9 Vapor Pro FG", category: "Campo", price: 389.90, stock: 8, image: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&q=80&w=600" },
+            { id: 2, name: "V9 Predator Turf", category: "Society", price: 299.90, stock: 5, image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=600" },
+            { id: 3, name: "V9 Street Court IN", category: "Futsal", price: 249.90, stock: 0, image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&q=80&w=600" },
+            { id: 4, name: "V9 Phantom Gold FG", category: "Campo", price: 459.90, stock: 3, image: "https://images.unsplash.com/photo-1579338559194-a162d19bf842?auto=format&fit=crop&q=80&w=600" }
+        ];
+
+        // ESTADO DA APLICAÇÃO
+        let products = JSON.parse(localStorage.getItem('v9_products')) || initialProducts;
+        let cart = JSON.parse(localStorage.getItem('v9_cart')) || [];
+        let currentFilter = 'all';
+
+        // SALVAR NO LOCALSTORAGE
+        function saveData() {
+            localStorage.setItem('v9_products', JSON.stringify(products));
+            localStorage.setItem('v9_cart', JSON.stringify(cart));
+        }
+
+        // FORMATAR MOEDA (R$)
+        function formatMoney(val) {
+            return val.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        // RENDERIZAR CATÁLOGO DE PRODUTOS
+        function renderCatalog() {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+
+            const filtered = currentFilter === 'all' 
+                ? products 
+                : products.filter(p => p.category === currentFilter);
+
+            filtered.forEach(p => {
+                const isAvailable = p.stock > 0;
+                const card = document.createElement('div');
+                card.className = "bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden hover:border-gold/40 transition-all flex flex-col group";
+                
+                card.innerHTML = `
+                    <div class="relative overflow-hidden h-52 bg-zinc-950">
+                        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-zinc-950/80 backdrop-blur-md border border-zinc-800 text-zinc-300 text-[10px] font-bold uppercase px-2.5 py-1 rounded-md">
+                            ${p.category}
+                        </span>
+                        <span class="absolute top-3 right-3 text-[10px] font-bold px-2 py-1 rounded-md uppercase ${isAvailable ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'}">
+                            ${isAvailable ? `Disponível (${p.stock})` : 'Esgotado'}
+                        </span>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow justify-between space-y-4">
+                        <div>
+                            <h3 class="font-bold text-lg text-white group-hover:text-gold transition-colors">${p.name}</h3>
+                            <p class="text-xl font-black text-white mt-1">${formatMoney(p.price)}</p>
+                        </div>
+                        <button 
+                            onclick="addToCart(${p.id})" 
+                            ${!isAvailable ? 'disabled' : ''} 
+                            class="w-full py-3 rounded-xl font-black text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 ${
+                                isAvailable 
+                                ? 'bg-gold hover:bg-gold-hover text-black shadow-lg shadow-gold/10' 
+                                : 'bg-zinc-800 text-zinc-500 cursor-not-allowed border border-zinc-700/50'
+                            }"
+                        >
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z"/></svg>
+                            ${isAvailable ? 'Adicionar ao Carrinho' : 'Sem Estoque'}
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // ADICIONAR ITEM AO CARRINHO
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            if (!product || product.stock <= 0) return;
+
+            const cartItem = cart.find(item => item.id === id);
+            if (cartItem) {
+                if (cartItem.qty < product.stock) {
+                    cartItem.qty++;
+                } else {
+                    alert('Quantidade máxima em estoque atingida.');
+                    return;
+                }
+            } else {
+                cart.push({ id: product.id, name: product.name, price: product.price, qty: 1, image: product.image });
+            }
+
+            saveData();
+            updateCartUI();
+        }
+
+        // ATUALIZAR INTERFACE DO CARRINHO
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartCountBadge = document.getElementById('cart-count');
+            const cartTotal = document.getElementById('cart-total');
+
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+            let totalItems = 0;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="text-center py-12 text-zinc-500">
+                        <svg class="w-12 h-12 mx-auto mb-3 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                        <p class="font-medium text-sm">Seu carrinho está vazio.</p>
+                    </div>
+                `;
+            } else {
+                cart.forEach(item => {
+                    const itemSubtotal = item.price * item.qty;
+                    total += itemSubtotal;
+                    totalItems += item.qty;
+
+                    const itemEl = document.createElement('div');
+                    itemEl.className = "flex items-center gap-4 bg-zinc-950 p-3 rounded-xl border border-zinc-800";
+                    itemEl.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" class="w-14 h-14 object-cover rounded-lg bg-zinc-900">
+                        <div class="flex-grow">
+                            <h4 class="font-bold text-sm text-white line-clamp-1">${item.name}</h4>
+                            <p class="text-xs text-gold font-bold">${formatMoney(item.price)}</p>
+                            <div class="flex items-center gap-2 mt-2">
+                                <button onclick="changeQty(${item.id}, -1)" class="w-6 h-6 rounded bg-zinc-800 text-zinc-300 font-bold flex items-center justify-center text-xs hover:bg-zinc-700">-</button>
+                                <span class="text-xs font-bold text-white">${item.qty}</span>
+                                <button onclick="changeQty(${item.id}, 1)" class="w-6 h-6 rounded bg-zinc-800 text-zinc-300 font-bold flex items-center justify-center text-xs hover:bg-zinc-700">+</button>
+                            </div>
+                        </div>
+                        <button onclick="removeFromCart(${item.id})" class="text-zinc-500 hover:text-red-400 p-1">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                        </button>
+                    `;
+                    cartItemsContainer.appendChild(itemEl);
+                });
+            }
+
+            cartCountBadge.textContent = totalItems;
+            cartTotal.textContent = formatMoney(total);
+        }
+
+        // ALTERAR QUANTIDADE NO CARRINHO
+        function changeQty(id, delta) {
+            const cartItem = cart.find(item => item.id === id);
+            const product = products.find(p => p.id === id);
+
+            if (cartItem && product) {
+                if (delta > 0 && cartItem.qty >= product.stock) {
+                    alert('Estoque máximo atingido.');
+                    return;
+                }
+                cartItem.qty += delta;
+                if (cartItem.qty <= 0) {
+                    cart = cart.filter(item => item.id !== id);
+                }
+            }
+            saveData();
+            updateCartUI();
+        }
+
+        // REMOVER ITEM DO CARRINHO
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            saveData();
+            updateCartUI();
+        }
+
+        // FILTRAR PRODUTOS
+        function filterProducts(cat) {
+            currentFilter = cat;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.className = "filter-btn px-4 py-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 font-bold text-xs uppercase tracking-wider hover:border-gold/40 transition-all";
+            });
+            event.target.className = "filter-btn active px-4 py-2 rounded-lg bg-gold text-black font-bold text-xs uppercase tracking-wider transition-all";
+            renderCatalog();
+        }
+
+        // TOGGLES DOS MODAIS
+        function toggleCartModal() {
+            document.getElementById('cart-modal').classList.toggle('hidden');
+        }
+
+        function toggleAdminModal() {
+            document.getElementById('admin-modal').classList.toggle('hidden');
+            renderAdminTable();
+        }
+
+        // GERENCIAMENTO ADMIN (CADASTRO / EDIÇÃO)
+        function handleProductSubmit(e) {
+            e.preventDefault();
+            const id = document.getElementById('prod-id').value;
+            const name = document.getElementById('prod-name').value;
+            const category = document.getElementById('prod-category').value;
+            const price = parseFloat(document.getElementById('prod-price').value);
+            const stock = parseInt(document.getElementById('prod-stock').value);
+            const image = document.getElementById('prod-image').value;
+
+            if (id) {
+                // Editar
+                const product = products.find(p => p.id == id);
+                if (product) {
+                    product.name = name;
+                    product.category = category;
+                    product.price = price;
+                    product.stock = stock;
+                    product.image = image;
+                }
+            } else {
+                // Criar Novo
+                const newProduct = {
+                    id: Date.now(),
+                    name,
+                    category,
+                    price,
+                    stock,
+                    image
+                };
+                products.push(newProduct);
+            }
+
+            saveData();
+            renderCatalog();
+            renderAdminTable();
+            resetForm();
+        }
+
+        function editProduct(id) {
+            const p = products.find(prod => prod.id === id);
+            if (p) {
+                document.getElementById('prod-id').value = p.id;
+                document.getElementById('prod-name').value = p.name;
+                document.getElementById('prod-category').value = p.category;
+                document.getElementById('prod-price').value = p.price;
+                document.getElementById('prod-stock').value = p.stock;
+                document.getElementById('prod-image').value = p.image;
+                document.getElementById('form-title').textContent = "Editar Produto";
+            }
+        }
+
+        function deleteProduct(id) {
+            if (confirm('Tem certeza que deseja excluir esta chuteira?')) {
+                products = products.filter(p => p.id !== id);
+                cart = cart.filter(c => c.id !== id);
+                saveData();
+                renderCatalog();
+                renderAdminTable();
+                updateCartUI();
+            }
+        }
+
+        function resetForm() {
+            document.getElementById('product-form').reset();
+            document.getElementById('prod-id').value = '';
+            document.getElementById('form-title').textContent = "Cadastrar Novo Produto";
+        }
+
+        // RENDERIZAR TABELA DO ADMIN
+        function renderAdminTable() {
+            const tbody = document.getElementById('admin-table-body');
+            tbody.innerHTML = '';
+
+            products.forEach(p => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="p-4 flex items-center gap-3">
+                        <img src="${p.image}" class="w-10 h-10 object-cover rounded bg-zinc-950">
+                        <span class="font-bold text-white">${p.name}</span>
+                    </td>
+                    <td class="p-4">${p.category}</td>
+                    <td class="p-4 font-bold text-gold">${formatMoney(p.price)}</td>
+                    <td class="p-4">${p.stock} un.</td>
+                    <td class="p-4 text-right space-x-2">
+                        <button onclick="editProduct(${p.id})" class="text-xs px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-gold font-bold rounded">Editar</button>
+                        <button onclick="deleteProduct(${p.id})" class="text-xs px-3 py-1.5 bg-red-950/40 hover:bg-red-900/60 text-red-400 font-bold rounded border border-red-800/30">Excluir</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // FINALIZAÇÃO DE COMPRA (SIMULAÇÃO)
+        function checkoutWhatsApp() {
+            if (cart.length === 0) return alert('Seu carrinho está vazio!');
+            let msg = "*PEDIDO V9 STORE*\n\n";
+            cart.forEach(item => {
+                msg += `• ${item.name} (${item.qty}x) - ${formatMoney(item.price * item.qty)}\n`;
+            });
+            const total = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+            msg += `\n*Total: ${formatMoney(total)}*`;
+            
+            window.open(`https://wa.me/5511999999999?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        function checkoutPIX() {
+            if (cart.length === 0) return alert('Seu carrinho está vazio!');
+            const total = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+            alert(`Simulação de Pagamento PIX\n\nValor Total: ${formatMoney(total)}\n\nChave PIX (CNPJ): 00.000.000/0001-99\nEmpresa: V9 Store Esportes LTDA`);
+        }
+
+        // INICIALIZAÇÃO
+        renderCatalog();
+        updateCartUI();
+    </script>
+</body>
+</html>
